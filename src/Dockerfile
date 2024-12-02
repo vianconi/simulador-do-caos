@@ -5,6 +5,7 @@ RUN npm install
 RUN apt update && apt install -y stress && npm install
 COPY . .
 RUN npm run compile
+HEALTHCHECK NONE
 EXPOSE 3000
 CMD ["npm", "start"]
 

@@ -1,0 +1,16 @@
+services:
+  simulador-do-caos:
+    image: vianconi/simulador-do-caos:${SIMULADOR_DO_CAOS_TAG}
+    build:
+      context: ./src
+      dockerfile: Dockerfile
+    ports:
+      - 8080:3000
+#   restart: always
+    healthcheck:
+      test: ["CMD","curl","-f","http://localhost:3000/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+#     disable: true
